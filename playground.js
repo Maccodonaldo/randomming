@@ -21,15 +21,16 @@ var ResponseService = /** @class */ (function () {
         this.handler(false, HandlerA);
     }
     ResponseService.prototype.setDefaultHandler = function (standard, message) {
-        return function (bool, handler) {
-            // return bool ? new handler() : standard(message)
-            if (bool) {
-                return new handler();
-            }
-            else {
-                return standard();
-            }
-        };
+        /*      return function (bool, handler) {
+        
+                    if(bool) {
+                        return new handler();
+                    } else {
+                        return standard();
+                    }
+                }
+        */
+        return function (bool, handler) { return bool ? new handler() : standard(message); };
     };
     return ResponseService;
 }());

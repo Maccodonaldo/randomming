@@ -1,18 +1,18 @@
 
-class HandlerA {
+export class HandlerA {
     constructor(){
         console.log('Handler A activated')
     }
 }
 
-class HandlerStandard {
+export class HandlerStandard {
     constructor(message) {
         console.log('Default Handler')
     }
 }
 
 
-class ResponseService {
+export class ResponseService {
     handler: any;
 
     constructor() {
@@ -23,7 +23,12 @@ class ResponseService {
 
     setDefaultHandler(standard: any, message: string) {
         return function (bool, handler) {
-            return bool ? new handler(message) : standard(message)
+            // return bool ? new handler() : standard(message)
+            if(bool) {
+                return new handler();
+            }else {
+                return standard();
+            }
         }
     }
     

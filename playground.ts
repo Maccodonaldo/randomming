@@ -22,14 +22,17 @@ export class ResponseService {
     }
 
     setDefaultHandler(standard: any, message: string) {
-        return function (bool, handler) {
-            // return bool ? new handler() : standard(message)
+
+/*      return function (bool, handler) {
+
             if(bool) {
                 return new handler();
-            }else {
+            } else {
                 return standard();
             }
-        }
+        } 
+*/
+        return (bool, handler) => bool ? new handler() : standard(message)
     }
     
 }
